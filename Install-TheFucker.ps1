@@ -1,7 +1,7 @@
 $dst = (Join-Path (@($env:PSModulePath.Split(';') | Where-Object {$_ -notlike $null})[0]) PoShFuck);
 $pfk = (Join-Path $env:temp "poshfuck.zip")
 
-md $dst -ea silentlycontinue
+New-Item -Path $dst -Type Directory -Force -ErrorAction SilentlyContinue
 
 [Net.ServicePointManager]::SecurityProtocol = "tls12"
 Invoke-WebRequest 'https://github.com/mattparkes/PoShFuck/archive/master.zip' -OutFile $pfk

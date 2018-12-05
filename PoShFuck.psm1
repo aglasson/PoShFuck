@@ -1,4 +1,4 @@
-﻿Function Invoke-TheFuck {
+Function Invoke-TheFuck {
 <#
 	.SYNOPSIS
 	Powershell Implementation of 'thefuck' https://github.com/nvbn/thefuck
@@ -269,7 +269,7 @@ param
 
 	## IF THE LOOP RETURNED ANY MATCHES RESET THE ARRAY WITH TOPMATCH AT FIRST
 	
-	if ( ( $lettermatch -ne $null ) -or ( $topmatch -ne $null ) ) { $cmdmatch = $topmatch + $lettermatch }
+	if ( ( !$lettermatch ) -or ( !$topmatch ) ) { $cmdmatch = $topmatch + $lettermatch }
 
 	## IF THERE IS ONLY ONE, TAKE IT!
 	
@@ -287,7 +287,7 @@ param
 		}
 	}
 	
-	if ( $lengthrmatch -ne $null ) { $cmdmatch = $lengthrmatch }
+	if ( !$lengthrmatch ) { $cmdmatch = $lengthrmatch }
 
 	## THEN, JUST RETURN THE FIRST?? --TODO RETURN THE WHOLE ARRAY
 	
@@ -335,8 +335,8 @@ param
 		$verblist += @( $cmd.Name.Split('-')[0]	)
 		$nounlist += @( $cmd.Name.Split('-')[1]	)
 	}
-	$verblist = $verblist | select -unique
-	$nounlist = $nounlist | select -unique
+	$verblist = $verblist | Select-Object -unique
+	$nounlist = $nounlist | Select-Object -unique
 
 	if ( $verblist -contains $Command.Split('-')[0] ) {
 		Write-Verbose "Cmdlet verb is correct"

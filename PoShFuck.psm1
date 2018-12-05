@@ -1,4 +1,4 @@
-Function Invoke-TheFuck {
+﻿Function Invoke-TheFuck {
 <#
 	.SYNOPSIS
 	Powershell Implementation of 'thefuck' https://github.com/nvbn/thefuck
@@ -302,9 +302,7 @@ function CommandAnagramExtApp {
 param
 (
 	[string]$Command
-)
-	$topcmd = 0
-	
+)	
 	## GATHER A LIST OF CANDIDATE COMMANDS AND PLACE THOSE OF A SIMILAR SIZE TO THE EXECUTED COMMAND INTO AN ARRAY
 	
 	$rawlist = Get-Command -CommandType Application | Select-Object Name

@@ -1,4 +1,4 @@
-$dst = (Join-Path $env:PSModulePath.Split(';')[0] PoShFuck);
+$dst = (Join-Path (@($env:PSModulePath.Split(';') | Where-Object {$_ -notlike $null})[0]) PoShFuck);
 $pfk = (Join-Path $env:temp "poshfuck.zip")
 
 md $dst -ea silentlycontinue
